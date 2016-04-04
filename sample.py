@@ -28,7 +28,7 @@ parser.add_argument('--filename', type=str, default='output',
                    help='filename of .svg file to output, without .svg')
 parser.add_argument('--sample_length', type=int, default=1200,
                    help='number of strokes to sample')
-parser.add_argument('--picture_size', type=float, default=160,
+parser.add_argument('--picture_size', type=float, default=300,
                    help='a centered svg will be generated of this size')
 parser.add_argument('--scale_factor', type=float, default=1,
                    help='factor to scale down by for svg output.  smaller means bigger output')
@@ -63,10 +63,10 @@ print "loading model: ",ckpt.model_checkpoint_path
 
 saver.restore(sess, ckpt.model_checkpoint_path)
 
-def draw_sketch_array(strokes_array, svg_only = False):
-  draw_stroke_color_array(strokes_array, factor=sample_args.scale_factor, maxcol = sample_args.num_col, svg_filename = sample_args.filename+'.svg', stroke_width = sample_args.stroke_width, block_size = sample_args.picture_size, svg_only = svg_only, color_mode = color_mode)
+def draw_sketch_array(strokes_array, index, svg_only = False):
+  draw_stroke_color_array(strokes_array, factor=sample_args.scale_factor, maxcol = sample_args.num_col, svg_filename = sample_args.filename+str(index)+'1.svg', stroke_width = sample_args.stroke_width, block_size = sample_args.picture_size, svg_only = svg_only, color_mode = color_mode)
 
-def sample_sketches(min_size_ratio = 0.0, max_size_ratio = 0.8, min_num_stroke = 4, max_num_stroke=22, svg_only = True):
+def sample_sketches(min_size_ratio = 0.0, max_size_ratio = 0.8, min_num_stroke = 4, max_num_stroke=300, svg_only = True):
   N = sample_args.num_picture
   frame_size = float(sample_args.picture_size)
   max_size = frame_size * max_size_ratio
@@ -74,6 +74,7 @@ def sample_sketches(min_size_ratio = 0.0, max_size_ratio = 0.8, min_num_stroke =
   count = 0
   sketch_list = []
   param_list = []
+  draw_list = []
 
   temp_mixture = sample_args.temperature
   temp_pen = sample_args.temperature
@@ -84,7 +85,7 @@ def sample_sketches(min_size_ratio = 0.0, max_size_ratio = 0.8, min_num_stroke =
     [strokes, params] = model.sample(sess, sample_args.sample_length, temp_mixture, temp_pen, stop_if_eoc = True)
     [sx, sy, num_stroke, num_char, _] = strokes.sum(0)
     if num_stroke < min_num_stroke or num_char == 0 or num_stroke > max_num_stroke:
-      #print "num_stroke ", num_stroke, " num_char ", num_char
+    #   print "num_stroke ", num_stroke, " num_char ", num_char
       continue
     [sx, sy, sizex, sizey] = calculate_start_point(strokes)
     if sizex > max_size or sizey > max_size:
@@ -97,9 +98,12 @@ def sample_sketches(min_size_ratio = 0.0, max_size_ratio = 0.8, min_num_stroke =
     print count+1,"/",N
     count += 1
     sketch_list.append(strokes)
+    draw_list.append(strokes)
     param_list.append(params)
+    draw_sketch_array(draw_list,count,svg_only=svg_only)
+    draw_list=[]
   # draw the pics
-  draw_sketch_array(sketch_list, svg_only = svg_only)
+  # draw_sketch_array(sketch_list, svg_only = svg_only)
   return sketch_list, param_list
 
 if __name__ == '__main__':

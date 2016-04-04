@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Angry Kanjis</title>
+		<meta name="description" content="SVG Drawing Animation" />
+
+		<style type="text/css">
+        #mySVG * {
+          fill-opacity: 0;
+          transition: fill-opacity 1s;
+        }
+
+        #mySVG.finished * {
+          fill-opacity: 1;
+        }
+
+        #bad{
+            font-size: 120px;
+        }
+        </style>
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/readable/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="container-full">
+        <h1>Mega-Kanjis</h1>
+        <object id="mySVG" type="image/svg+xml" data="../svgs/angry/angrystr18_21.svg"></object>
+        <object id="mySVG1" type="image/svg+xml" data="../svgs/angry/angrystr18_51.svg"></object>
+        <object id="mySVG2" type="image/svg+xml" data="../svgs/angry/angrystr18_61.svg"></object>
+        <object id="mySVG3" type="image/svg+xml" data="../svgs/angry/angrystr18_111.svg"></object>
+        <object id="mySVG4" type="image/svg+xml" data="../svgs/angry/angrystr18_151.svg"></object>
+        <object id="mySVG5" type="image/svg+xml" data="../svgs/angry/a11.svg"></object>
+        <object id="mySVG6" type="image/svg+xml" data="../svgs/angry/a71.svg"></object>
+        <object id="mySVG7" type="image/svg+xml" data="../svgs/angry/a101.svg"></object>
+        <object id="mySVG8" type="image/svg+xml" data="../svgs/angry/a231.svg"></object>
+        <object id="mySVG9" type="image/svg+xml" data="../svgs/angry/a421.svg"></object>
+        <object id="mySVG10" type="image/svg+xml" data="../svgs/angry/a431.svg"></object>
+        <button class="btn btn-default" onclick="replay()">replay</button>
+
+        <h1>Kanjis that mean "angry"</h1>
+        <table>
+            <tr>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/0.svg"></object>
+                    <br>Sharp
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/1.svg"></object>
+                    <br />Be angry
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/2.svg"></object>
+                    <br />Angry voice
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/3.svg"></object>
+                    <br />Be angry
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/5.svg"></object>
+                    <br />Glare
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/6.svg"></object>
+                    <br />Be angry
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/7.svg"></object>
+                    <br />Bark, roar
+                </th>
+                <th>
+                    <object type="image/svg+xml" data="../svgs/orig/8.svg"></object>
+                    <br />Be offended
+                </th>
+            </tr>
+
+        </table>
+        <h1>Interesting Screw-ups</h1>
+        <object type="image/svg+xml" data="../svgs/screwups/a261.svg"></object>
+        <br />
+        <object type="image/svg+xml" data="../svgs/screwups/a311.svg"></object><h1 id="bad">劣</h1>
+        <br />
+        <object type="image/svg+xml" data="../svgs/screwups/wish11.svg"></object>
+
+
+    </div>
+
+    </body>
+
+<script src="vivus.js"></script>
+<script>
+        var myVivus = new Vivus('mySVG', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus1 = new Vivus('mySVG1', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus2 = new Vivus('mySVG2', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus3 = new Vivus('mySVG3', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus4 = new Vivus('mySVG4', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus5 = new Vivus('mySVG5', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus6 = new Vivus('mySVG6', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus7 = new Vivus('mySVG7', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus8 = new Vivus('mySVG8', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus9 = new Vivus('mySVG9', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        var myVivus10 = new Vivus('mySVG10', {duration: 500, type: "oneByOne", start: "autostart", onReady: function(){
+        }}, function(obj){
+        });
+        kanjis = [myVivus,myVivus1,myVivus2,myVivus3,myVivus4,myVivus5,myVivus6,myVivus7,myVivus8,myVivus9,myVivus10];
+
+        function replay(){
+            for (var i = 0; i < kanjis.length; i ++){
+                kanjis[i].reset().play();
+            }
+        }
+
+
+</script>

@@ -258,5 +258,3 @@ class Model():
 
     strokes[:,0:2] *= self.args.data_scale
     return strokes, mixture_params
-
-

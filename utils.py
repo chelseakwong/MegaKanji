@@ -71,6 +71,7 @@ def draw_stroke_color_array(data, factor=1, svg_filename = 'sample.svg', stroke_
         p = "M "+str(prev_x)+","+str(prev_y)+" L "+str(abs_x)+","+str(abs_y)+" "
 
       lift_pen = max(cdata[i, 2], cdata[i, 3]) # lift pen if both eos or eoc
+
       #end_of_char = cdata[i, 3] # not used for now.
 
       if color_mode == False:
@@ -281,5 +282,3 @@ class SketchLoader():
     self.pointer = 0
     self.epoch_finished = False
     self.index = np.random.permutation(self.index)
-
-
